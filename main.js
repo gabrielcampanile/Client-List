@@ -1,54 +1,21 @@
-// Selecionando elementos
+document.getElementById('clientForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-const slider = document.getElementById("slider");
+    const clientName = document.getElementById('clientName').value;
 
-const primaryText = document.querySelector(".primary-text");
+    if (clientName) {
+      const li = document.createElement('li');
+      li.textContent = clientName;
 
-const allButtons = document.querySelectorAll("button");
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', function() {
+        li.remove();
+      });
 
-const title = document.querySelector(".title");
+      li.appendChild(deleteButton);
+      document.getElementById('clientList').appendChild(li);
 
-// Manipulando elementos
-
-title.style.color = "red";
-
-title.innerText = "Sou um título vermelho!";
-
-title.classList.add("red-title");
-
-// Criando elementos
-
-const newButton = document.createElement("button");
-newButton.className = "green-button";
-newButton.innerText = "Sou um botão verde!";
-newButton.style.color = "green";
-
-document.querySelector(".container").appendChild(newButton);
-
-
-// Removendo elementos
-
-const container = document.querySelector(".container");
-const element = document.querySelector(".element");
-
-container.removeChild(element);
-
-
-// Atribuindo funções
-
-function darkMode() {
-    document.body.style.backgroundColor = "black";
-}
-
-const button = document.querySelector(".dark-mode-button");
-
-button.addEventListener("click", darkMode);
-
-// Atribuindo funções anônimas
-
-const darkModeButton = document.querySelector(".dark-mode-button");
-
-button.addEventListener("click", function () {
-    document.body.style.backgroundColor = "black";
-});
-
+      document.getElementById('clientName').value = '';
+    }
+  });
